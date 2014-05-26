@@ -5,11 +5,8 @@ This is a translation from the PHP code (version 5.3.8) to JS.
 Here the quotes of the PHP based code:
 
 "This is a translation of the C code into PHP (version 5.3.8) by
-Susanne Feistel, IOW 2013, 
-Contact: susanne.feistel@io-warnemuende.de
-
+Susanne Feistel, IOW 2013, (susanne.feistel@io-warnemuende.de)
 You should download the documentation from http://teos-10.org.
-
 The functions gsw_saar and gsw_delta_sa_ref
 have been modified from the original to not use an external
 data file for global absolute salinity anomaly and absolute
@@ -17,48 +14,30 @@ salinity anomaly ratio data. The data are instead incorporated
 into static tables that are used directly."
 
 Files:
-/======/
 
-readme.txt					- this file.
+======
 
-index.html					- the check javascript functions library.
-
-teos.css					- A few styles used
-
-/js/TEOS10_gsw_oceanographic_toolbox.js		- the GSW library less gsw_saar
-
-/js/TEOS10_gsw_oceanographic_toolbox_min.js	- minified code of TEOS10_gsw_oceanographic_toolbox.js
-
-/js/TEOS10_gsw_saar.js				- the gsw_saar and gsw_delta_sa_ref (modified)
-
-/js/TEOS10_gsw_saar_min.js			- minified code of TEOS10_gsw_saar.js
-
-/js/TEOS10_gsw_saar_data.js			- static global absolute salinity anomaly data 
-							  used by gsw_saar.c and created by gsw_format
-							  Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version 
-
-/Example/teos.html				- a sample page to use JS version of several functions of TEOS10 Library
-
-/Example/TEOS10help.html			- help page with the headers of the TEOS10 Library
-
-/Example/TEOS10notation.html			- help page with the summary of symbols used in teos.html
-
-/Example/css/example.css			- a few styles used in teos.html
-
-/Example/css/cupertino.css			- a few styles used in teos.html (from jQuery UI)
-
-/Example/images/x.png				- icon used in pop-up divs
-
-/Example/js/teos.js				- Functions to build and manage teos.html
-
-/Example/js/jquery-1.11.0.min.js		- jQuery library
-
-/Example/js/jquery-ui.custom.js			- jQuery UI library
-
-/Example/Mathjax				- Mathjax library to show LaTeX code in html pages
-
+    readme.txt					- this file.
+    index.html					- the check javascript functions library.
+    teos.css					- A few styles used
+    /js/TEOS10_gsw_oceanographic_toolbox.js	- the GSW library less gsw_saar
+    /js/TEOS10_gsw_oceanographic_toolbox_min.js	- minified code of TEOS10_gsw_oceanographic_toolbox.js
+    /js/TEOS10_gsw_saar.js			- the gsw_saar and gsw_delta_sa_ref (modified)
+    /js/TEOS10_gsw_saar_min.js			- minified code of TEOS10_gsw_saar.js
+    /js/TEOS10_gsw_saar_data.js			- static global absolute salinity anomaly data used by gsw_saar.c and created by gsw_format Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version 
+    /Example/teos.html				- a sample page to use JS version of several functions of TEOS10 Library
+    /Example/TEOS10help.html			- help page with the headers of the TEOS10 Library
+    /Example/TEOS10notation.html		- help page with the summary of symbols used in teos.html
+    /Example/css/example.css			- a few styles used in teos.html
+    /Example/css/cupertino.css			- a few styles used in teos.html (from jQuery UI)
+    /Example/images/x.png			- icon used in pop-up divs
+    /Example/js/teos.js				- Functions to build and manage teos.html
+    /Example/js/jquery-1.11.0.min.js		- jQuery library
+    /Example/js/jquery-ui.custom.js		- jQuery UI library
+    /Example/Mathjax				- Mathjax library to show LaTeX code in html pages
 						
 Installation:
+
 /==========/
 
 Copy all files in a local directory or web server directory.
