@@ -19,11 +19,13 @@ Files:
     readme.txt					- this file.
     index.html					- the check javascript functions library.
     teos.css					- A few styles used
+    
     /js/TEOS10_gsw_oceanographic_toolbox.js	- the GSW library less gsw_saar
     /js/TEOS10_gsw_oceanographic_toolbox_min.js	- minified code of TEOS10_gsw_oceanographic_toolbox.js
     /js/TEOS10_gsw_saar.js			- the gsw_saar and gsw_delta_sa_ref (modified)
     /js/TEOS10_gsw_saar_min.js			- minified code of TEOS10_gsw_saar.js
-    /js/TEOS10_gsw_saar_data.js			- static global absolute salinity anomaly data used by gsw_saar.c and created by gsw_format Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version 
+    /js/TEOS10_gsw_saar_data.js			- static global absolute salinity anomaly data used by gsw_saar.c and created by gsw_format Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version
+    
     /Example/teos.html				- a sample page to use JS version of several functions of TEOS10 Library
     /Example/TEOS10help.html			- help page with the headers of the TEOS10 Library
     /Example/TEOS10notation.html		- help page with the summary of symbols used in teos.html
