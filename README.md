@@ -14,7 +14,6 @@ salinity anomaly ratio data. The data are instead incorporated
 into static tables that are used directly."
 
 Files:
-
 ======
 
     readme.txt					- this file.
@@ -37,14 +36,12 @@ Files:
     /Example/Mathjax				- Mathjax library to show LaTeX code in html pages
 						
 Installation:
-
-/==========/
+==========
 
 Copy all files in a local directory or web server directory.
 Open the index.html into the browser or call http://your.webserver.com/your-directory/index.html
 to see functions and check values. I any value appears in red tje installation is ok !.
 
-   
 To call the GSW library in any page:
  1) Be sure that the three JS files are loaded in the page's header
  
@@ -73,19 +70,20 @@ and then call the methods as
     var p_sal=TEOS10.gsw_sa_from_sp(35.0, 100.0, 260.0, 20.0);
 
 Requirements:
-/========/
+========
 
 You don't need something special to use TEOS10 JS library. But if you
 look at teos.html page in the "Example" folder by sure of the correct links
 to:
-    - jQuery and jQuery UI libraries
 
+    - jQuery and jQuery UI libraries
     - MathJax:
 
 that are also included in /Example/js/ folder only for demostration purposes.
 
 ChangeLog:
-/=======/
+=======
+
 2014-05-29:	gsw-3.0 Initial creation.
 
 Emilio García Ladona <emilio@icm.csic.es>
