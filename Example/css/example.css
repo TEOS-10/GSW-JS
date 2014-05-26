@@ -1,0 +1,81 @@
+/**************************
+ELEMENTOS DECORATIVOS
+***************************/
+body{ background-color: #E6F0F3 }
+
+a { text-decoration:none; }
+
+.ora { color: #FF6700; }
+.azul { color: #0000FF; }
+.verde { color: #11BFB1; }
+
+.trs { border-bottom: 2px solid blue; } 
+.wtr { line-height: 4ex; }
+
+.shadow {
+ -moz-box-shadow: 5px 5px 5px #4c4c4c;
+ -webkit-box-shadow: 5px 5px 5px #4c4c4c;
+ box-shadow:   5px 5px 5px #4c4c4c;
+}
+
+/*** FIGURAS *****/
+.figura {
+ margin:auto;
+ background-color: #E6F0F3;
+ border: 0 solid black;
+ border-radius: 8px 8px 8px 8px;
+ box-shadow: 0 0 100px black;
+ padding: 0ex;
+ /*padding-left: 1ex;
+ padding-right: 1ex;*/
+ position: fixed;
+ top: 20%;
+ left: 10%;
+ width: 80%;
+ z-index: 100;
+}
+
+.close {
+ vertical-align:top;
+ height:35px;
+ float:right;
+}
+
+.titulores {
+ width:100%;
+ height:5ex;
+ margin:0px;
+ margin-left:-1.2%;
+ padding-right:0px;
+ /*border: 1px solid black;*/
+ border-radius:  10px 10px 10px 10px ;
+ margin:0px;
+ padding-top:-5px;
+
+/*background-color:#18bfef;*/
+
+background: -moz-linear-gradient(#e6f0f3,#7fe2ff,#e6f0f3); // FIRefox
+background: -webkit-linear-gradient(#e6f0f3,#7fe2ff,#e6f0f3); //Chrome
+background: -o-linear-gradient(#e6f0f3,#7fe2ff,#e6f0f3); //Chrome
+backgound: linear-gradient(#e6f0f3,#7fe2ff,#e6f0f3);  //Standard
+}
+
+.titulores h3 {
+ padding:0ex;
+ padding-left:1ex;
+ padding-top:1ex;
+ margin:0px;
+}
+
+.cuerpo {
+ clear:both;
+ margin:0px;
+ padding: 1ex 1ex 0ex 1ex;
+}
+
+.piefig {
+ clear:both;
+ margin:0px 0px 1ex 0px;
+ padding: 0ex 1ex 1ex 1ex;
+}
+
