@@ -45,7 +45,8 @@ Open the index.html into the browser or call http://your.webserver.com/your-dire
 to see functions and check values. I any value appears in red tje installation is ok !.
 
 To call the GSW library in any page:
- 1) Be sure that the three JS files are loaded in the page's header
+
+    1) Be sure that the three JS files are loaded in the page's header
  
     <head>
 	.....
@@ -53,9 +54,9 @@ To call the GSW library in any page:
      <script src="./js/TEOS10_gsw_oceanographic_toolbox_min.js"></script> <!-- TEOS Toolbox --->
      <script src="./js/TEOS10_gsw_saar_min.js"></script>                  <!-- GSW_saar --->
 	......
-    </head> 
-	
- 2) These files build two objects:
+    </head>
+    
+    2) These files build two objects:
 
          TEOS10_gsw_saar
          TEOS10_gsw_oceanographic_toolbox
