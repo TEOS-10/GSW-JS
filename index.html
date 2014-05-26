@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="author" content="Emili García Ladona">
+<meta name="description" content="Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version 3.0 (JS)">
+<meta name="keywords" content="Gibbs SeaWater (GSW) Oceanographic Toolbox TEOS-10">
+<meta name="creation-date" content="13/05/2014">
+<link rel="stylesheet" type="text/css" href="./teos.css" />
+
+<!--
+<script src="./js/jquery-1.11.0.min.js"></script>
+<script src="./js/ui/jquery-ui.custom.js"></script>
+-->
+
+<script src="./js/TEOS10_gsw_saar_data.js"></script>   		<!-- Data Tables --->
+<script src="./js/TEOS10_gsw_oceanographic_toolbox_min.js"></script> <!-- TEOS Toolbox except gsw_saar--->
+<script src="./js/TEOS10_gsw_saar_min.js"></script>                     <!-- TEOS gsw_saar --->
+<title>TEOS library in JavaScript</title>
+</head>
+<body>
+
+<p class="c">
+=======================================================================<br/>
+Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version 3.0 (JavaScript)<br/>
+=======================================================================<br/>
+</p>
+<p class="c b"><a href="Example/teos.html">See a sample page</a></p>
+<p class="c">These are the check values for the subset of functions that have been converted into C, PHP and then coded in JavaScript from the Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 (version 3.0).</p>
+<div style="width:80%;margin:auto;">
+<p class="margen" style="width:40%;">
+        Practical Salinity; sp = 35.5e0;<br />
+	Absolute Salinity; sa = 35.7e0;<br />
+	Preformed Salinity; sstar = 35.5e0;<br />
+	Reference Salinity; sr = 35.5e0;<br />
+	<em>In situ</em> Temperature; t = 15e0;<br />
+	Conservative Temperature; ct	= 20e0;<br />
+	Potential Temperature; pt = 15e0</p>
+<p class="margenr" style="width:40%;">Presión: p = 300e0;<br />
+	Sea pressure (Baltic); p_bs = 50e0;<br />
+	Refrence sea pressure; p_ref = 100e0;<br />
+	Longitude; lon= 260e0;<br />
+	Longitude; (Baltic) long_bs = 20e0;<br />
+	Latitude; lat = 16e0;<br />
+	Latitude (Baltic); lat_bs = 60e0;<br/>
+        Saturation Fraction; saturation_fraction= 0.5e0;</p>
+<p style="clear:both" class="c b rojo">Unaccceptable Differences should appear in red.</p>
+</div>
+
+<table class="tabletest">
+<tr><th colspan="5" class="l rowsection">Absolute Salinity, Preformed Salinity and Conservative Temperature:</th></tr>
+
+<script type="text/javascript">
+ function  rawtable(functions) {
+     var html="<tr><td class=\"b\">Function</td>"+
+		"<td class=\"b\">Calculated Value</td>"+
+		"<td class=\"b\">Check Value</td>"+
+		"<td class=\"b\">Difference</td>"+
+		"<td class=\"b\">Acceptable Difference</td></tr>\n";
+
+    for (var j=0; j < functions.length; j++) {
+		diff = Math.abs(functions[j].check-functions[j].value);
+		html +='<tr>'+
+			"<td >"+functions[j].func+"</td>"+
+			"<td>"+functions[j].value+"</td>"+
+			"<td>"+functions[j].check+"</td>"+
+			"<td>"+diff+"</td>";
+			if(diff > functions[j].diff)
+			   html += '<td class=\"b rojo\">'+functions[j].diff+"</td>";	
+			else 
+                           html += "<td>"+functions[j].diff+"</td>";
+
+		html +='</tr>';
+	}
+   document.write(html);
+   return;
+  }
+
+    var TEOS10 = new TEOS10_gsw_oceanographic_toolbox();
+    var GSW_saar = new TEOS10_gsw_saar(); 
+
+	var sp =  35.5e0;
+	var sa = 35.7e0;
+	var sstar = 35.5e0;
+	var sr	= 35.5e0;
+	var t	= 15e0;
+	var ct	= 20e0;
+	var pt	= 15e0;
+	var p	= 300e0;
+	var p_bs  = 50e0;
+	var p_ref = 100e0;
+	var lon	= 260e0;
+	var long_bs = 20e0;
+	var lat	= 16e0;
+	var lat_bs = 60e0;
+	var saturation_fraction	= 0.5e0;
+
+	functions = new Array();
+	functions[0]={func:'gsw_sa_from_sp(sp,p,lon,lat)', 	// name of the function
+		          value:TEOS10.gsw_sa_from_sp(sp,p,lon,lat), 	// result of function
+		          check:35.671358392019094e0,			// expected result ("check value)
+		          diff:1.300080043620255e-010}; // Acceptable difference from check value
+
+	functions[1]={func:'gsw_sstar_from_sp(sa,p,lon,lat)',
+				  value:TEOS10.gsw_sstar_from_sp(sa,p,lon,lat),
+				  check:35.866946753006239e0,
+				  diff:1.300008989346679e-010};
+	functions[2]={func:'gsw_ct_from_t(sa,t,p)',
+				  value:TEOS10.gsw_ct_from_t(sa,t,p),
+				  check:14.930280459895560e0,
+				  diff:6.261107188265669e-010};
+	rawtable(functions);
+</script>	
+<!--
+	############################################################################
+	# Other conversions between temperatures, salinities, entropy, pressure and height:--->
+	<tr><td colspan="5" class="l rowsection">
+		Other conversions between temperatures, salinities, entropy, pressure and height:
+	</td></tr>
+<script type="text/javascript">
+	functions = new Array();
+		functions[0]={func:'gsw_deltasa_from_sp(sp,p,lon,lat)', 	// name of the function
+			value: TEOS10.gsw_deltasa_from_sp(sp,p,lon,lat), 	// result of function
+			check: 3.96067773336028495e-3,						// expected result ("check value)
+			diff: 6.963318810448982e-013};						// Acceptable difference from check value
+		functions[1]={func: 'gsw_sr_from_sp(sp)',
+			value: TEOS10.gsw_sr_from_sp(sp),
+			check: 35.667397714285734e0,
+			diff: 1.303233077010191e-010};
+		functions[2]={func: 'gsw_sp_from_sr(sr)',
+			value: TEOS10.gsw_sp_from_sr(sr),
+			check: 35.333387933015295e0,
+			diff: 1.297122409482654e-010};
+		functions[3]={func: 'gsw_sp_from_sa(sa,p,lon,lat)',
+			value: TEOS10.gsw_sp_from_sa(sa,p,lon,lat),
+			check: 35.528504019167094e0,
+			diff: 1.297113527698457e-010};
+		functions[4]={func: 'gsw_sstar_from_sa(sa,p,lon,lat)',
+			value: TEOS10.gsw_sstar_from_sa(sa,p,lon,lat),
+			check: 35.694648791860907e0,
+			diff: 1.300008989346679e-010};
+		functions[5]={func: 'gsw_sp_from_sstar(sstar,p,lon,lat)',
+			value: TEOS10.gsw_sp_from_sstar(sstar,p,lon,lat),
+			check: 35.334761242083573e0,
+			diff: 1.297122409482654e-010};
+		functions[6]={func: 'gsw_sa_from_sstar(sstar,p,lon,lat)',
+			value: TEOS10.gsw_sa_from_sstar(sstar,p,lon,lat),
+			check: 35.505322027120805e0,
+			diff: 1.300222152167407e-010};
+		functions[7]={func: 'gsw_pt_from_ct(sa,ct)',
+			value: TEOS10.gsw_pt_from_ct(sa,ct),
+			check: 20.023899375975017e0,
+			diff: 6.054037271496782e-010};
+		functions[8]={func: 'gsw_t_from_ct(sa,ct,p)',
+	 		value: TEOS10.gsw_t_from_ct(sa,ct,p),
+			check: 20.079820359223014e0,
+			diff: 6.000142604989378e-010};
+		functions[9]={func: 'gsw_ct_from_pt(sa,pt)',
+			value: TEOS10.gsw_ct_from_pt(sa,pt),
+			check: 14.976021403957613e0,
+			diff: 6.261107188265669e-010};
+		functions[10]={func: 'gsw_pt0_from_t(sa,t,p)',
+			value: TEOS10.gsw_pt0_from_t(sa,t,p),
+			check: 14.954241363902305e0,
+			diff: 6.054037271496782e-010};
+		functions[11]={func: 'gsw_pt_from_t(sa,t,p,p_ref)',
+			value: TEOS10.gsw_pt_from_t(sa,t,p,p_ref),
+			check: 14.969381237883740e0,
+			diff: 6.054037271496782e-010};
+
+	rawtable(functions);
+</script>
+	
+ <!--	############################################################################
+	# Density and enthalpy, based on the 48-term expression for density: -->
+	<tr><td colspan="5" class="l rowsection">
+		Density and enthalpy, based on the 48-term expression for density:
+	</td></tr>
+
+<script type="text/javascript">
+	functions = new Array();
+		functions[0]={func: 'gsw_rho(sa,ct,p)', 	// name of the function
+			value: TEOS10.gsw_rho(sa,ct,p), 	// result of function
+			check: 1026.4562376198473e0,		// expected result ("check value)
+			diff: 2.945625965367071e-010};		// Acceptable difference from check value
+		functions[1]={func: 'gsw_alpha(sa,ct,p)',
+			value: TEOS10.gsw_alpha(sa,ct,p),
+			check: 2.62460550806784356e-4,
+			diff: 8.264713918662917e-015};
+		functions[2]={func: 'gsw_beta(sa,ct,p)',
+			value: TEOS10.gsw_beta(sa,ct,p),
+			check: 7.29314455934463365e-4,
+			diff: 1.846179459308317e-015};
+		functions[3]={func: 'gsw_specvol(sa,ct,p)',
+			value: TEOS10.gsw_specvol(sa,ct,p),
+			check: 9.74225654586897711e-4,
+			diff: 2.821094052807283e-016};
+		functions[4]={func: 'gsw_specvol_anom(sa,ct,p)',
+			value: TEOS10.gsw_specvol_anom(sa,ct,p),
+			check: 2.90948181201264571e-6,
+			diff: 2.810252031082428e-016};
+		functions[5]={func: 'gsw_sound_speed(sa,ct,p)',
+			value: TEOS10.gsw_sound_speed(sa,ct,p),
+			check: 1527.2011773569989e0,
+			diff: 2.596152626210824e-009};
+		functions[6]={func: 'gsw_internal_energy(sa,ct,p)',
+			value: TEOS10.gsw_internal_energy(sa,ct,p),
+			check: 79740.482561720783e0,
+			diff: 2.499342372175306e-006};
+		functions[7]={func: 'gsw_enthalpy(sa,ct,p)',
+			value: TEOS10.gsw_enthalpy(sa,ct,p),
+			check: 82761.872939932495e0,
+			diff: 2.499356924090534e-006};
+		functions[8]={func: 'gsw_dynamic_enthalpy(sa,ct,p)',
+			value: TEOS10.gsw_dynamic_enthalpy(sa,ct,p),
+			check: 2924.5137975399025e0,
+			diff: 2.288754734930485e-007};
+
+	rawtable(functions);
+</script>
+
+	<!-- ############################################################################
+	# Freezing temperatures: -->
+	<tr><td colspan="5" class="l rowsection">Freezing temperatures:</td></tr>
+
+<script type="text/javascript">
+	functions = new Array();
+		functions[0]={func:'gsw_ct_freezing(sa,p,saturation_fraction)', // name of the function
+			value: TEOS10.gsw_ct_freezing(sa,p,saturation_fraction), // result of function
+			check: -2.1801450326174852e0,		// expected result ("check value)
+			diff: 2.257127817983928e-011};   	// Acceptable difference from check value
+		functions[1]={func:'gsw_t_freezing(sa,p,saturation_fraction)',
+			value: TEOS10.gsw_t_freezing(sa,p,saturation_fraction),
+			check: -2.1765521998023516e0,
+			diff: 2.157829470661454e-011};
+			
+	rawtable(functions);
+</script>
+
+	<!-- ############################################################################
+	# Isobaric melting enthalpy and isobaric evaporation enthalpy:-->
+	<tr><td colspan="5" class="l rowsection">
+	    Isobaric melting enthalpy and isobaric evaporation enthalpy:
+	</td></tr>
+<script type="text/javascript">
+	functions = new Array();
+		functions[0]={func: 'gsw_latentheat_melting(sa,p)', // name of the function
+			value: TEOS10.gsw_latentheat_melting(sa,p), 	// result of function
+			check: 329330.54839618353e0,			// expected result ("check value)
+			diff: 6.286427378654480e-008};			// Acceptable difference from check value
+		functions[1]={func: 'gsw_latentheat_evap_ct(sa,ct)',
+			value: TEOS10.gsw_latentheat_evap_ct(sa,ct),
+			check: 2450871.0228523901e0,
+			diff: 1.455657184123993e-006};
+		functions[2]={func: 'gsw_latentheat_evap_t(sa,t)',
+			value: TEOS10.gsw_latentheat_evap_t(sa,t),
+			check: 2462848.2895522709e0,
+			diff: 1.443084329366684e-006};
+			
+	rawtable(functions);
+</script>
+	<!-- ############################################################################
+	# Basic thermodynamic properties in terms of in-situ t, based on the exact Gibbs function:--->
+	<tr><td colspan="5" class="l rowsection">
+	    Basic thermodynamic properties in terms of in-situ t, based on the exact Gibbs function:
+	</td></tr>
+
+<script type="text/javascript">
+	functions = new Array();
+		functions[0]={func: 'gsw_rho_t_exact(sa,t,p)', 	// name of the function
+			value: TEOS10.gsw_rho_t_exact(sa,t,p), 	// result of function
+			check: 1027.7128170207150e0,		// expected result ("check value)
+			diff: 2.944489096989855e-010};		// Acceptable difference from check value
+		functions[1]={func: 'gsw_pot_rho_t_exact(sa,t,p,p_ref)',
+			value: TEOS10.gsw_pot_rho_t_exact(sa,t,p,p_ref),
+			check: 1026.8362655887486e0,
+			diff: 2.929709808086045e-010};
+		functions[2]={func: 'gsw_alpha_wrt_t_exact(sa,t,p)',
+			value: TEOS10.gsw_alpha_wrt_t_exact(sa,t,p),
+			check: 2.19066952410728916e-4,
+			diff: 8.594856868316542e-015};
+		functions[3]={func: 'gsw_beta_const_t_exact(sa,t,p)',
+			value: TEOS10.gsw_beta_const_t_exact(sa,t,p),
+			check: 7.44744841648729426e-4,
+			diff: 1.804871356536619e-015};
+		functions[4]={func: 'gsw_specvol_t_exact(sa,t,p)',
+			value: TEOS10.gsw_specvol_t_exact(sa,t,p),
+			check: 9.73034473676164815e-4,
+			diff: 2.818925648462312e-016};
+		functions[5]={func: 'gsw_sound_speed_t_exact(sa,t,p)',
+			value: TEOS10.gsw_sound_speed_t_exact(sa,t,p),
+			check: 1512.2053940303056e0,
+			diff: 2.590240910649300e-009};
+		functions[6]={func: 'gsw_kappa_t_exact(sa,t,p)',
+			value: TEOS10.gsw_kappa_t_exact(sa,t,p),
+			check: 4.25506953386609075e-010,
+			diff: 1.712677458291044e-021};
+		functions[7]={func: 'gsw_enthalpy_t_exact(sa,t,p)',
+			value: TEOS10.gsw_enthalpy_t_exact(sa,t,p),
+			check: 62520.680485510929e0,
+			diff: 2.499349648132920e-006};
+		functions[8]={func: 'gsw_entropy_t_exact(sa,t,p)',
+			value: TEOS10.gsw_entropy_t_exact(sa,t,p),
+			check: 212.30166821093002e0,
+			diff: 9.028163105995191e-009};
+		functions[9]={func: 'gsw_cp_t_exact(sa,t,p)',
+			value: TEOS10.gsw_cp_t_exact(sa,t,p),
+			check: 3982.7832563441461e0,
+			diff: 2.813976607285440e-009};
+	rawtable(functions);
+</script>
+	<!-- ############################################################################
+	# Library functions of the GSW toolbox: -->
+	<tr><td colspan="5" class="l rowsection">Library functions of the GSW toolbox:</td></tr>
+
+<script type="text/javascript">
+	functions = new Array();
+		functions[0]={func: 'GSW_saar.gsw_delta_sa_ref(p,lon,lat)', 	// name of the function
+			      value: GSW_saar.gsw_delta_sa_ref(p,lon,lat), 	// result of function
+			      check: 3.87660373016291727e-3,	// expected result ("check value)
+			      diff: 6.945514042372425e-013};	  // Acceptable difference from check value
+		functions[1]={func: 'gsw_fdelta(p,lon,lat)',
+			      value: TEOS10.gsw_fdelta(p,lon,lat),
+ 			      check: 1.49916256924158942e-004,
+			      diff: 2.702939055302528e-014};
+		functions[2]={func: 'gsw_sa_from_sp_baltic(sp,long_bs,lat_bs)',
+			      value: TEOS10.gsw_sa_from_sp_baltic(sp,long_bs,lat_bs),
+			      check: 35.666154857142850e0,
+			      diff: 1.300080043620255e-010};
+		functions[3]={func: 'gsw_sp_from_sa_baltic(sa,long_bs,lat_bs)',
+			      value: TEOS10.gsw_sp_from_sa_baltic(sa,long_bs,lat_bs),
+			      check: 35.533769845749660e0,
+			      diff: 1.297113527698457e-010};
+	rawtable(functions);
+</script>
+	</table>
+	<p class="b">Gibbs SeaWater (GSW) Oceanographic Toolbox is installed.</p> 
+<hr>
+</body>
+</html>

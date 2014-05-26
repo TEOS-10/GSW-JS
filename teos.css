@@ -1,0 +1,41 @@
+/***********/
+/* Some CSS styles */
+/**********/
+body{ background-color: #E6F0F3 }
+
+.teosheader {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding-bottom: 1ex;
+}
+
+.teosheader p { padding-left:2ex; }
+.teosheader table { margin-left:8ex; border-collapse:collapse}
+
+.tabletest th, .tabletest th, .tabletest td {
+  margin:auto;
+  border: 1px solid black;
+  width:100%;
+  font-size:90%;
+}
+.rowsection {
+ background: #555; 
+ color: #fff;
+}
+
+.b { font-weight:bold; }
+
+.r { text-align:right; }
+.l { text-align:left; }
+.c { text-align:center; }
+
+.vt { vertical-align:top; }
+
+.rojo { color:red; }
+
+.in { padding-left:1ex; }
+.in4 { padding-left:4ex; }
+
+.margen { float:left; margin:1ex;}
+.margenr {float:right; margin:1ex; }
+
