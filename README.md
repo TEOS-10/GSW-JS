@@ -42,7 +42,7 @@ Installation:
 
 Copy all files in a local directory or web server directory.
 Open the index.html into the browser or call http://your.webserver.com/your-directory/index.html
-to see functions and check values. I any value appears in red the installation is ok !.
+to see functions and check values. If no value appears in red the installation is ok !.
 
 To call the GSW library in any page:
 
