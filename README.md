@@ -20,7 +20,7 @@ Files:
     index.html					- the check javascript functions library.
     teos.css					- A few styles used
     
-    /js/TEOS10_gsw_oceanographic_toolbox.js	- the GSW library less gsw_saar
+    /js/TEOS10_gsw_oceanographic_toolbox.js	- the GSW library except gsw_saar
     /js/TEOS10_gsw_oceanographic_toolbox_min.js	- minified code of TEOS10_gsw_oceanographic_toolbox.js
     /js/TEOS10_gsw_saar.js			- the gsw_saar and gsw_delta_sa_ref (modified)
     /js/TEOS10_gsw_saar_min.js			- minified code of TEOS10_gsw_saar.js
