@@ -25,6 +25,7 @@ Files:
     /js/TEOS10_gsw_saar.js			- the gsw_saar and gsw_delta_sa_ref (modified)
     /js/TEOS10_gsw_saar_min.js			- minified code of TEOS10_gsw_saar.js
     /js/TEOS10_gsw_saar_data.js			- static global absolute salinity anomaly data used by gsw_saar.c and created by gsw_format Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 version
+    /js/Data/check_cast.js			- Check values based on 3 profiles from North Pacific from the MATLAB code
     
     /Example/teos.html				- a sample page to use JS version of several functions of TEOS10 Library
     /Example/TEOS10help.html			- help page with the headers of the TEOS10 Library
@@ -73,7 +74,7 @@ and then call the methods as
     var p_sal=TEOS10.gsw_sa_from_sp(35.0, 100.0, 260.0, 20.0);
 
 Requirements:
-========
+==========
 
 You don't need something special to use TEOS10 JS library. But if you
 look at teos.html page in the "Example" folder by sure of the correct links
@@ -88,6 +89,7 @@ ChangeLog:
 =======
 
 2014-05-29:	gsw-3.0 Initial creation.
+2014-06-04:	Small correction of some alert() calls in toolbox. Added a check_cast.js with data and check values from MATLAB 3.0 code.
 
 Emilio García Ladona <emilio@icm.csic.es>
 Institut de Ciències del Mar (ICM-CSIC)
