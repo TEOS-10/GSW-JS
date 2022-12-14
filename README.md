@@ -77,7 +77,7 @@ Requirements:
 ==========
 
 You don't need something special to use TEOS10 JS library. But if you
-look at teos.html page in the "Example" folder by sure of the correct links
+look at teos.html page in the "Example" folder be sure of the correct links
 to:
 
     - jQuery and jQuery UI libraries
